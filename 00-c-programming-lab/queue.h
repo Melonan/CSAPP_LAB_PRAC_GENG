@@ -10,6 +10,10 @@
  *
  * It uses a singly-linked list to represent the set of queue elements
  */
+
+#ifndef QUEUE_H
+#define QUEUE_H
+
 #include <stdbool.h>
 
 /************** Data structure declarations ****************/
@@ -19,7 +23,7 @@ typedef struct ELE {
     /* Pointer to array holding string.
        This array needs to be explicitly allocated and freed */
     char *value;
-    struct ELE *next;
+    struct ELE *next ;
 } list_ele_t;
 
 /* Queue structure */
@@ -89,3 +93,6 @@ int q_size(queue_t *q);
   It should rearrange the existing ones.
  */
 void q_reverse(queue_t *q);
+
+
+#endif
