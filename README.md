@@ -10,16 +10,25 @@
 - d  daemon 守护进程, docker 后台运行
 --------
 但是仍然无法ssh远程登陆，
-安装 'net-tools'
-`netstat -nltp`发现22端口并未被监听，该docker并未启动ssh
-安装sshd
-`apt-get install openssh-server`
-运行sshd 
-`/usr/sbin/sshd`
-报错:
-'Missing privilege separation directory: /run/sshd'
-`mkdir -p /run/sshd`
-再次启动，22端口成功监听
+**在root用户下**
+- ~~安装 'net-tools' `apt-get install net-tools`~~
+  - `netstat -nltp`发现22端口并未被监听，该docker并未启动ssh
+- 安装sshd
+  - `apt-get update` 更新apt-get 
+  - `apt-get install openssh-server`
+- 运行sshd
+  - `service ssh start`
+  <br>or
+  - `/usr/sbin/sshd`
+
+查看ssh状态
+`service ssh status`
+
+> 若报错:
+> 'Missing privilege separation directory: /run/sshd'
+> 则
+> `mkdir -p /run/sshd`
+> 再次启动，22端口成功监听
 ---------
 ## [MyLabNotes](./csapp_lab.md)
 
